@@ -17,11 +17,11 @@ export class DataService {
     return this.http.get(this.baseUrl + "/country");
   }
 
-  getCountry(id) {
+  getCountry(id:number) {
     return this.http.get(this.baseUrl + "/country/" + id);
   }
 
-  addCountry(name) {
+  addCountry(name:string) {
     return this.http.post(this.baseUrl + "/country", {
       "id": 0,
       "name": name
@@ -32,7 +32,7 @@ export class DataService {
     return this.http.delete(this.baseUrl + "/country/"+id);
   }
 
-  editCountry(id,name) {
+  editCountry(id:number,name:string) {
     return this.http.put(this.baseUrl + "/country", {
       id: id,
       name: name

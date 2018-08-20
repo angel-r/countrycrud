@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service'
 import { Observable } from 'rxjs';
 
+class Country{
+  id:number;
+  name:string;
+}
+
 @Component({
   selector: 'app-countries',
   templateUrl: './countries.component.html',
@@ -9,18 +14,19 @@ import { Observable } from 'rxjs';
 })
 export class CountriesComponent implements OnInit {
   countries$: Object;
-  public newName: string;
-
-  editCountry(c){
+  newName: string;
+  
+  editCountry(c:Country){
     this.data.editCountry(c.id,c.name).subscribe(
       response => {
+
         this.loadCountries();
       }
     );
     return false;
   }
 
-  deleteCountry(id){
+  deleteCountry(id:number){
     this.data.deleteCountry(id).subscribe(
       response => {
         this.loadCountries();
@@ -29,11 +35,14 @@ export class CountriesComponent implements OnInit {
   }
 
   addNew() {    
-    this.data.addCountry(this.newName).subscribe(
-      response => {
-        this.loadCountries();
-      }
-    );
+    if (this.newName) {
+      this.data.addCountry(this.newName).subscribe(
+        response => {
+          this.loadCountries();
+        }
+      );
+    }
+   
     return false;
   }
 
