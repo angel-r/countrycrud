@@ -10,14 +10,15 @@ import { Observable } from 'rxjs';
 })
 export class CountryDetailComponent implements OnInit {
 
+  countryId$: number;
   country$: Object;
 
   constructor(private data: DataService, private route: ActivatedRoute) {
-    this.route.params.subscribe(params => this.country$ = params.id);
+    this.route.params.subscribe(params => this.countryId$ = params.id);
   }
 
   ngOnInit() {
-    this.data.getCountry(this.country$).subscribe(
+    this.data.getCountry(this.countryId$).subscribe(
       resp => {
         this.country$ = resp;        
       }
