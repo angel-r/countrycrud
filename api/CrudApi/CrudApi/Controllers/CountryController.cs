@@ -7,8 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace CrudApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class CountryController : Controller
     {
+
+
+
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
