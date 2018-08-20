@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Paises</h1>
+     
+      <form (submit)="addNew()" class="form-horizontal">
+        <input type="text" [(ngModel)]="newName" placeholder="Nuevo Pais" class="form-control" name="newName">
+        <button class="btn btn-outline-success">Guardar</button>
+      </form>
+
+      <br>
+      <br>
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Acciones</th>
+        </tr>
+        <tr *ngFor="let item of countries$">
+          <td>{{item.id}}</td>
+          <td>
+            <div *ngIf="!item?.edit">
+              {{item.name}} 
+            </div>
+            <div *ngIf="item?.edit">
+              <form (submit)="editCountry(item)" class="form-horizontal">
+                <input type="text" [(ngModel)]="item.name" placeholder="Nombre Pais" class="form-control" name="editName">
+                <button class="btn btn-outline-success">Guardar</button>
+              </form>
+            </div>
+          
+          </td>
+          <td>
+            <a class="btn btn-success mr-2" routerLink="/{{item.id}}">Detalles</a>
+            <button class="btn btn-warning mr-2" (click)="item.edit = true">Editar</button>       
+            <button (click)="deleteCountry(item.id)" class="btn btn-danger">Eliminar</button>
+          </td>
+        </tr>
+
+
+      </table>
+
+    </div>
+  </div>
+</div>

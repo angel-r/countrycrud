@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Dapper.Contrib.Extensions;
 
 namespace CrudApi.Model
 {
+    [Table ("country")]
     public class Country
     {
         public int Id { get; set; }
